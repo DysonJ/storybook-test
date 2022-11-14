@@ -1,11 +1,11 @@
-name: Build-Storybook
+name: Build Storybook
 run-name: Build/Deploy Storybook
 on:
   push:
     branches:
       - master
 jobs:
-  Build Storybook:
+  Build-Storybook:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
