@@ -17,6 +17,7 @@ jobs:
 
       - name: Merge into storybook
         run: |
+          git fetch --unshallow
           git checkout storybook
           git merge master
           git push
