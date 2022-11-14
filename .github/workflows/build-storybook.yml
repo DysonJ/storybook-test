@@ -15,9 +15,13 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "Github Actions"
 
-      - name: Merge into storybook
+      - name: Merge Latest
         run: |
           git fetch --unshallow
           git checkout storybook
           git merge master -X theirs
-          git push
+
+      - name: Build Static Storybook
+        run: |
+          npm install
+          npm run build-storybook
