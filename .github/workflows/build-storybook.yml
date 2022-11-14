@@ -1,11 +1,11 @@
 name: Build Storybook
-run-name: merge & build Storybook
+run-name: Build/Deploy Storybook
 on:
   push:
     branches:
       - master
 jobs:
-  Merge-From-Master:
+  Build Storybook:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -25,3 +25,11 @@ jobs:
         run: |
           npm install
           npm run build-storybook
+
+      - name: Commit & Push
+        run: |
+          git add -A
+          git commit -m "Storybook"
+          git push
+
+      
