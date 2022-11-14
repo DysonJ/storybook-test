@@ -19,5 +19,5 @@ jobs:
         run: |
           git fetch --unshallow
           git checkout storybook
-          git merge master -theirs
+          git merge master -X theirs
           git push
