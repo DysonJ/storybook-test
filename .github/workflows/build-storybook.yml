@@ -11,12 +11,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set Git config
-      - run: |
+        run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "Github Actions"
 
       - name: Merge into storybook
-      - run: |
+        run: |
           git checkout storybook
           git merge master
           git push
