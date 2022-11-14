@@ -8,12 +8,17 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: git checkout storybook
-      - run: git merge master
-      - run: npm install
-      - run: npm run build-storybook
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - uses: actions/checkout@v2
+
+      - name: Set Git config
+      - run : |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
+
+      - name: Merge into storybook
+      - run: |
+          git checkout storybook
+          git merge master
+          git push
+
+    
