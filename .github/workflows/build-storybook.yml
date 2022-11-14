@@ -1,17 +1,17 @@
 name: Build Storybook
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: merge & build Storybook
 on:
   push:
     branches:
       - master
 jobs:
-  Explore-GitHub-Actions:
+  Merge-From-Master:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: Set Git config
-      - run : |
+      - run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "Github Actions"
 
@@ -20,5 +20,3 @@ jobs:
           git checkout storybook
           git merge master
           git push
-
-    
