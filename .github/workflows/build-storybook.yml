@@ -1,4 +1,4 @@
-name: Build Storybook
+name: Build-Storybook
 run-name: Build/Deploy Storybook
 on:
   push:
@@ -31,5 +31,3 @@ jobs:
           git add -A
           git commit -m "Storybook"
           git push
-
-      
