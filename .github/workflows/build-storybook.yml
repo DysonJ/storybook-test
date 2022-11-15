@@ -1,4 +1,5 @@
 name: Build Storybook
+run-name: Build Storybook
 on:
   push:
     branches:
@@ -14,10 +15,8 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "Github Actions"
 
-      - name: Merge Latest
-        run: |
-          git fetch --unshallow
-          git checkout master
+      - name: Fetch Master
+        run: git fetch --unshallow
 
       - name: Build Static Storybook
         run: |
@@ -27,5 +26,5 @@ jobs:
       - name: Commit & Push
         run: |
           git add -A
-          git commit -m "Storybook"
-          git push origin storybook --force
+          git commit -m "Storybook Build"
+          git push origin master:storybook --force
