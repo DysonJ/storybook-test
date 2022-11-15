@@ -15,8 +15,11 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "Github Actions"
 
-      - name: Fetch Master
-        run: git fetch --unshallow
+      - name: Merge Master
+        run: |
+          git fetch --unshallow
+          git checkout storybook
+          git merge master -X theirs
 
       - name: Build Static Storybook
         run: |
@@ -27,4 +30,4 @@ jobs:
         run: |
           git add -A
           git commit -m "Storybook Build"
-          git push origin master:storybook --force
+          git push
