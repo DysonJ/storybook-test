@@ -1,11 +1,10 @@
 name: Build Storybook
-run-name: Build/Deploy Storybook
 on:
   push:
     branches:
       - master
 jobs:
-  Build-Storybook:
+  Build-Static-Storybook:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,8 +17,7 @@ jobs:
       - name: Merge Latest
         run: |
           git fetch --unshallow
-          git checkout storybook
-          git merge master -X theirs
+          git checkout master
 
       - name: Build Static Storybook
         run: |
@@ -30,4 +28,4 @@ jobs:
         run: |
           git add -A
           git commit -m "Storybook"
-          git push
+          git push origin storybook --force
