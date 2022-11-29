@@ -10,4 +10,6 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            # Add comment body with markdown
+            github.issues.createComment({
+                body: `my comment here yay!`
+              })
