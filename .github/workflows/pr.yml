@@ -1,0 +1,11 @@
+name: setup-pull-request
+on: pull-request
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v3
+            with:
+              github-token: ${{secrets.GITHUB_TOKEN}}
+              script: |
+              # Add comment body with markdown
