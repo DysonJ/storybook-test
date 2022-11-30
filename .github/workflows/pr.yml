@@ -8,7 +8,10 @@ jobs:
     # if: ${{github.label.name == 'bug'}}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$github"
+      - name: get context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+      - run: echo "$GITHUB_CONTEXT"
       # - uses: actions/checkout@v2
       # - uses: actions/github-script@v6
       #   with:
