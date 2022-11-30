@@ -5,9 +5,7 @@ on:
 
 jobs:
   comment:
-    if: |
-    console.log(github)
-    true
+    if: ${{github.action.pull_request.label.name == 'bug'}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
