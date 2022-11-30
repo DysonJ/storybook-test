@@ -1,4 +1,4 @@
-module.exports = ({github, context}) => {
+module.exports = async ({github, context}) => {
   console.log(JSON.stringify(context));
   const creator = context.payload.sender.login;
 
