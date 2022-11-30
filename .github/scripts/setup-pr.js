@@ -4,13 +4,14 @@ module.exports = async ({github, context, core}) => {
   const owner = context.repo.owner
   const repo = context.repo.repo
   const issue_number = context.issue.number
+  const ticket_number = context.payload.pull_request.title.match(/(?<=DESC?.|desc?.)\d{0,4}/)
 
   //await github.request(`PATCH /repos/${context.repo.owner}/${context.repo.repo}/pulls/${context.payload.pull_request.number}`, {body:"hello world"});
   await github.rest.pulls.update({
     owner,
     repo,
     pull_number: issue_number,
-    body: `[**DESC-1234**](https://pepsico-ecomm.atlassian.net/browse/DESC-6039)\n` + context.payload.pull_request.body
+    body: `[**DESC-${ticket_number}**](https://pepsico-ecomm.atlassian.net/browse/DESC-${ticket_number})\n` + context.payload.pull_request.body
   })
 
   await github.rest.issues.addAssignees({
