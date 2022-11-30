@@ -3,7 +3,7 @@ module.exports = ({github, context, core}) => {
   const owner = context.repo.owner
   const repo = context.repo.repo
   const issue_number = context.issue.number
-  const ticket_number = context.payload.pull_request.title.match(/(?<=DESC?.)\d{4}/gi)[0];
+  const ticket_number = context.payload.pull_request.title.match(/(?<=DESC?.)\d{4}/gi)?.[0];
 
   console.log(context)
 
