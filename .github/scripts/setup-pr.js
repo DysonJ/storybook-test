@@ -4,7 +4,10 @@ module.exports = async ({github, context, core}) => {
   const owner = context.repo.owner
   const repo = context.repo.repo
   const issue_number = context.issue.number
-  const ticket_number = context.payload.pull_request.title.match(/(?<=DESC?.|desc?.)\d{0,4}/)
+  const ticket_number = context.payload.pull_request.title.match(/(?<=DESC?.|desc?.)\d{0,4}/g)
+
+  console.log(context.payload.pull_request.title)
+  console.log('match ', ticket_number)
 
   //await github.request(`PATCH /repos/${context.repo.owner}/${context.repo.repo}/pulls/${context.payload.pull_request.number}`, {body:"hello world"});
   await github.rest.pulls.update({
