@@ -9,12 +9,4 @@ jobs:
     steps:
       - uses: actions/github-script@v6
         with:
-          script: |
-            console.log(JSON.stringify(context));
-
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `**Welcome**, new contributor`
-            })
+          script: ('../scripts/setup-pr.js')({github, context})
