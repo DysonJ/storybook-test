@@ -6,6 +6,6 @@ module.exports = async ({github, context}) => {
     issue_number: context.issue.number,
     owner: context.repo.owner,
     repo: context.repo.repo,
-    body: `title: ${context.title} by ${creator}`
+    body: `title: ${context.payload.pull_request.title} by ${creator}`
   })
 }
