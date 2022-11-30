@@ -14,7 +14,7 @@ module.exports = ({github, context, core}) => {
       type: "mrkdwn",
       text: "*Ready for Review* :tada: \n DESC-1234 This is a description of the thing"
     }
-  },
+  }
 
 
   const details = {
