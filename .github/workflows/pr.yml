@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/github-script@v6
         with:
-          script: ('../scripts/setup-pr.js')({github, context})
+          script: require('../scripts/setup-pr.js')({github, context})
