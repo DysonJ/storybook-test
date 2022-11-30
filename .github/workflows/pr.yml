@@ -5,7 +5,9 @@ on:
 
 jobs:
   comment:
-    if: ${{ context.payload.label.name == 'bug' }}
+    if: |
+    console.log(github)
+    true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
