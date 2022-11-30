@@ -8,8 +8,8 @@ jobs:
     # if: ${{github.label.name == 'bug'}}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$github"
-      - uses: actions/checkout@v2
-      - uses: actions/github-script@v6
-        with:
-          script: require('.github/scripts/setup-pr.js')({github, context, core})
+      - run: echo github
+      # - uses: actions/checkout@v2
+      # - uses: actions/github-script@v6
+      #   with:
+      #     script: require('.github/scripts/setup-pr.js')({github, context, core})
