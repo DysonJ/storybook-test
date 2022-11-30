@@ -7,7 +7,7 @@ module.exports = async ({github, context, core}) => {
     owner: context.repo.owner,
     repo: context.repo.repo,
     pull_number: context.payload.pull_request.number,
-    body: context.payload.pull_request + `/n Another world here`
+    body: context.payload.pull_request.body + `\n Another world here`
   })
 
   console.log(context.payload.pull_request.number)
