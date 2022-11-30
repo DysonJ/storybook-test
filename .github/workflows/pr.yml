@@ -5,9 +5,10 @@ on:
 
 jobs:
   comment:
-    if: ${{github.label.name == 'bug'}}
+    # if: ${{github.label.name == 'bug'}}
     runs-on: ubuntu-latest
     steps:
+      - run: echo "$github"
       - uses: actions/checkout@v2
       - uses: actions/github-script@v6
         with:
