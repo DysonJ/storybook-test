@@ -8,11 +8,7 @@ jobs:
     if: ${{github.event.label.name == 'bug'}}
     runs-on: ubuntu-latest
     steps:
-      - name: get context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      # - uses: actions/checkout@v2
-      # - uses: actions/github-script@v6
-      #   with:
-      #     script: require('.github/scripts/setup-pr.js')({github, context, core})
+      - uses: actions/checkout@v3
+      - uses: actions/github-script@v6
+        with:
+          script: require('.github/scripts/labeled-pr.js')({github, context, core})
