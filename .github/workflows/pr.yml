@@ -5,6 +5,7 @@ on:
 
 jobs:
   comment:
+    if: context.payload.label.name == 'bug'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
