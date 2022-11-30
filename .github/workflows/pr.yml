@@ -5,7 +5,7 @@ on:
     types: [labeled]
 
 jobs:
-  comment:
+  lets-send-a-slack:
     if: ${{github.event.label.name == 'Needs Review'}}
     runs-on: ubuntu-latest
     steps:
