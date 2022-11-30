@@ -1,6 +1,5 @@
 name: Request PR Review
 run-name: Request PR Review
-title:
 on:
   pull_request_target:
     types: [labeled]
