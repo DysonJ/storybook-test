@@ -1,11 +1,13 @@
-name: Pull Request Messenger
+name: Request PR Review
+run-name: Request PR Review
+title:
 on:
   pull_request_target:
     types: [labeled]
 
 jobs:
   comment:
-    if: ${{github.event.label.name == 'bug'}}
+    if: ${{github.event.label.name == 'Needs Review'}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

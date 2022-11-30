@@ -22,7 +22,7 @@ module.exports = ({github, context, core}) => {
     fields: [
       {
         type: "mrkdwn",
-        text: `*PR:* <${context.payload.pull_request.url}|${issue_number}>`
+        text: `*PR:* <https://github.com/pepsico-ecommerce/ecomm-engine-frontend/pull/${issue_number}|${issue_number}>`
       }
     ]
   }
