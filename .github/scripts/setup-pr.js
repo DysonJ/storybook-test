@@ -7,6 +7,9 @@ module.exports = ({github, context, core}) => {
 
   console.log(context)
 
+  console.log('-----')
+  console.log(github.event)
+
   if(ticket_number){
     let body = `[**DESC-${ticket_number}**](https://pepsico-ecomm.atlassian.net/browse/DESC-${ticket_number})`;
     if(context.payload.pull_request.body){
