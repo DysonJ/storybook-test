@@ -1,18 +1,18 @@
-name: Request PR Review
-run-name: Request PR Review
+name: Validate PR
+
 on:
-  pull_request_target:
-    types: [labeled]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  lets-send-a-slack:
-    if: ${{github.event.label.name == 'Needs Review'}}
+  run-build:
     runs-on: ubuntu-latest
-    environment: pr
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/github-script@v6
-        env:
-          SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
-        with:
-          script: require('.github/scripts/labeled-pr.js')({github, context})
+
+      - name: build-storybook
+        run: |
+          npm install
+          npm run build-storybook
+          rm -r docs
+          mv storybook-static docs
