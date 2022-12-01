@@ -9,9 +9,8 @@ jobs:
     if: ${{github.event.label.name == 'Needs Review'}}
     runs-on: ubuntu-latest
     steps:
-      with:
-        super_secret: ${{ secrets.SLACK_WEBHOOK_PATH }}
       - uses: actions/checkout@v3
       - uses: actions/github-script@v6
         with:
+          super_secret: ${{ secrets.SLACK_WEBHOOK_PATH }}
           script: require('.github/scripts/labeled-pr.js')({github, context, SLACK_WEBHOOK_PATH})
