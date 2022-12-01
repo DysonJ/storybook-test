@@ -8,6 +8,7 @@ jobs:
   lets-send-a-slack:
     if: ${{github.event.label.name == 'Needs Review'}}
     runs-on: ubuntu-latest
+    environment: pr
     steps:
       - uses: actions/checkout@v3
       - uses: actions/github-script@v6
