@@ -1,10 +1,11 @@
 const https = require('https');
-module.exports = ({github, context, slackWebhookPath}) => {
+module.exports = ({github, context}) => {
 
   const creator = context.payload.pull_request.user.login;
   const issue_number = context.issue.number
   const ticket_number = context.payload.pull_request.title.match(/(?<=DESC?.)\d{4}/gi)?.[0];
-
+  console.log(process.env)
+  console.log('-----')
   console.log(context)
   console.log('-----')
 
@@ -50,7 +51,7 @@ module.exports = ({github, context, slackWebhookPath}) => {
     hostname:'hooks.slack.com',
     port: 443,
     method:'POST',
-    path:`/services/${slackWebhookPath}`,
+    path:`/services/${process.env.SLACK_WEBHOOK_PATH}`,
     headers: {
       'Content-Type': 'application/json',
     }
