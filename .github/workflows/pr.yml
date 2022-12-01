@@ -12,5 +12,5 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/github-script@v6
         with:
-          super_secret: ${{ secrets.SLACK_WEBHOOK_PATH }}
+          slackWebhookPath: ${{ secrets.SLACK_WEBHOOK_PATH }}
           script: require('.github/scripts/labeled-pr.js')({github, context, SLACK_WEBHOOK_PATH})

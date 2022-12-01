@@ -1,5 +1,5 @@
 const https = require('https');
-module.exports = ({github, context, SLACK_WEBHOOK_PATH}) => {
+module.exports = ({github, context, slackWebhookPath}) => {
 
   const creator = context.payload.pull_request.user.login;
   const issue_number = context.issue.number
