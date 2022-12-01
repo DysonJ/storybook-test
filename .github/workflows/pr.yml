@@ -13,4 +13,4 @@ jobs:
       - uses: actions/github-script@v6
         with:
           slackWebhookPath: ${{ secrets.SLACK_WEBHOOK_PATH }}
-          script: require('.github/scripts/labeled-pr.js')({github, context, SLACK_WEBHOOK_PATH})
+          script: require('.github/scripts/labeled-pr.js')({github, context, slackWebhookPath})
