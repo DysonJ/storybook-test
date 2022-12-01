@@ -50,7 +50,7 @@ module.exports = ({github, context, slackWebhookPath}) => {
     hostname:'hooks.slack.com',
     port: 443,
     method:'POST',
-    path:`/services/${SLACK_WEBHOOK_PATH}`,
+    path:`/services/${slackWebhookPath}`,
     headers: {
       'Content-Type': 'application/json',
     }
