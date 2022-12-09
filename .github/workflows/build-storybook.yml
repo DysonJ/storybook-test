@@ -1,33 +1,33 @@
-name: Build Storybook
-run-name: Build Storybook
-on:
-  push:
-    branches:
-      - master
-jobs:
-  Build-Static-Storybook:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+# name: Build Storybook
+# run-name: Build Storybook
+# on:
+#   push:
+#     branches:
+#       - master
+# jobs:
+#   Build-Static-Storybook:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
 
-      - name: Set Git config
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "Github Actions"
+#       - name: Set Git config
+#         run: |
+#           git config --local user.email "actions@github.com"
+#           git config --local user.name "Github Actions"
 
-      - name: Checkout master
-        run: |
-          git fetch --unshallow
+#       - name: Checkout master
+#         run: |
+#           git fetch --unshallow
 
-      - name: Build Static Storybook
-        run: |
-          npm install
-          npm run build-storybook
-          rm -r docs
-          mv storybook-static docs
+#       - name: Build Static Storybook
+#         run: |
+#           npm install
+#           npm run build-storybook
+#           rm -r docs
+#           mv storybook-static docs
 
-      - name: Commit & Push
-        run: |
-          git add -A
-          git commit -m "Storybook Build"
-          git push origin master:storybook --force
+#       - name: Commit & Push
+#         run: |
+#           git add -A
+#           git commit -m "Storybook Build"
+#           git push origin master:storybook --force
