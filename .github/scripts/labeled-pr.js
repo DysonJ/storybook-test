@@ -1,13 +1,23 @@
 const https = require('https');
 module.exports = ({github, context}) => {
-
+  const owner = context.repo.owner
+  const repo = context.repo.repo
   const creator = context.payload.pull_request.user.login;
   const issue_number = context.issue.number
   const ticket_number = context.payload.pull_request.title.match(/(?<=DESC?.)\d{4}/gi)?.[0];
-  console.log(process.env)
+  //console.log(process.env)
   console.log('-----')
   console.log(context)
   console.log('-----')
+
+  const reviewers = context.payload.pull_request.requested_reviewers
+
+  github.rest.pulls.requestedReviewers({
+    owner,
+    repo,
+    pull_number: issue_number,
+    reviewers: ['DysonJ']
+  })
 
   // const header = {
   //   type: "section",
