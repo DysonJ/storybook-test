@@ -1,0 +1,12 @@
+name: Build Branch
+run-name: Build Branch
+on:
+  "workflow_dispatch"
+
+jobs:
+  Start-A-Server:
+    runs-on: ubuntu-latest
+    steps:
+        run: |
+          echo "hello"
+

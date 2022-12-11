@@ -16,7 +16,7 @@ module.exports = ({github, context}) => {
     owner,
     repo,
     pull_number: issue_number,
-    reviewers: ['DysonJ']
+    team_reviewers:['orex-frontend']
   })
 
   // const header = {
