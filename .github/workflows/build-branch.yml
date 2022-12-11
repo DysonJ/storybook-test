@@ -8,6 +8,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Set Git config
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
+
+      - name: Checkout master
+        run: |
+          git fetch --unshallow
+
       - name: Build Static Storybook
         run: |
           npm install
@@ -19,5 +28,5 @@ jobs:
         run: |
           git add -A
           git commit -m "Storybook Build"
-          git push origin master:storybook --force
+          git push origin HEAD:storybook --force
 
