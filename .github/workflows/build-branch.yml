@@ -1,5 +1,5 @@
-name: Build Branch
-run-name: Storybook @ ${{ github.ref_name }} by ${{ github.actor }}
+name: Build & Deploy Branch
+run-name: Build from ${{ github.ref_name }} by ${{ github.actor }}
 on: workflow_dispatch
 
 jobs:
