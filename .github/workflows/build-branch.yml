@@ -1,7 +1,6 @@
 name: Build Branch
 run-name: Build Branch
-on:
-  "workflow_dispatch"
+on: "workflow_dispatch"
 
 jobs:
   Start-A-Server:
