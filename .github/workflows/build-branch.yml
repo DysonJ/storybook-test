@@ -1,12 +1,12 @@
 name: Build Branch
-run-name: 
+run-name: Storybook build from ${{ GITHUB_HEAD_REF }} by ${{GITHUB_TRIGGERING_ACTOR}}
 on: workflow_dispatch
 
 jobs:
   Build-Static-Storybook:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ inputs }}
+      - run: echo "done"
       # - uses: actions/checkout@v3
 
       # - name: Set Git config
