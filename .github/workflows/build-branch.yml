@@ -1,12 +1,23 @@
 name: Build Branch
 run-name: Build Branch
-on: 
-  workflow_dispatch
+on: workflow_dispatch
 
 jobs:
-  Start-A-Server:
+  Build-Static-Storybook:
     runs-on: ubuntu-latest
     steps:
-        - run: |
-            echo "hello"
+      - uses: actions/checkout@v3
+
+      - name: Build Static Storybook
+        run: |
+          npm install
+          npm run build-storybook
+          rm -r docs
+          mv storybook-static docs
+
+      - name: Commit & Push
+        run: |
+          git add -A
+          git commit -m "Storybook Build"
+          git push origin master:storybook --force
 
