@@ -1,5 +1,5 @@
 name: Build Branch
-run-name: Storybook build from ${{ GITHUB_HEAD_REF }} by ${{GITHUB_TRIGGERING_ACTOR}}
+run-name: Storybook build from ${{ github.base_ref }} by @${{ github.actor }}
 on: workflow_dispatch
 
 jobs:
