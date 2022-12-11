@@ -1,28 +1,29 @@
 name: Build Branch
-run-name: Build Branch
+run-name: 
 on: workflow_dispatch
 
 jobs:
   Build-Static-Storybook:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - run: echo ${{ inputs }}
+      # - uses: actions/checkout@v3
 
-      - name: Set Git config
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "Github Actions"
+      # - name: Set Git config
+      #   run: |
+      #     git config --local user.email "actions@github.com"
+      #     git config --local user.name "Github Actions"
 
-      - name: Build Static Storybook
-        run: |
-          npm install
-          npm run build-storybook
-          rm -r docs
-          mv storybook-static docs
+      # - name: Build Static Storybook
+      #   run: |
+      #     npm install
+      #     npm run build-storybook
+      #     rm -r docs
+      #     mv storybook-static docs
 
-      - name: Commit & Push
-        run: |
-          git add -A
-          git commit -m "Storybook Build"
-          git push origin HEAD:storybook --force
+      # - name: Commit & Push
+      #   run: |
+      #     git add -A
+      #     git commit -m "Storybook Build"
+      #     git push origin HEAD:storybook --force
 
