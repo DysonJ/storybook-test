@@ -7,6 +7,6 @@ jobs:
   Start-A-Server:
     runs-on: ubuntu-latest
     steps:
-        run: |
+        - run: |
           echo "hello"
 
