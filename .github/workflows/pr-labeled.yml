@@ -11,8 +11,12 @@ jobs:
     environment: pr
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - run: git checkout HEAD^
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
         with:
-          script: require('.github/scripts/labeled-pr.js')({github, context})
+          script: require('.github/scripts/pr-onLabeled.js')({github, context})
+
