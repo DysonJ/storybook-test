@@ -17,10 +17,8 @@ jobs:
           fetch-depth: 2
       - id: DIFF
         name: Run Diff
-        run: |
-          list='git diff --name-only  master...HEAD'
-          echo $list 
         # run: echo "files=$(git diff --name-only  master...HEAD)" >> "$GITHUB_OUTPUT" 
+        run: echo "files=$(git diff origin/${{ github.base_ref }}..${{ github.sha }})" >> "$GITHUB_OUTPUT" 
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
