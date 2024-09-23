@@ -15,7 +15,7 @@ jobs:
         with: 
           fetch-depth: 2
       - id: DIFF
-        run: git diff --name-only -r HEAD^1 HEAD >> $GITHUB_OUTPUT
+        run: echo "git diff --name-only -r HEAD^1 HEAD" >> $GITHUB_OUTPUT
       - id: script
       - uses: actions/github-script@v6
         env:
