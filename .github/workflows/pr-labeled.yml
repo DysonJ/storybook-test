@@ -15,12 +15,12 @@ jobs:
         with: 
           fetch-depth: 2
       - id: DIFF
-        run: git diff --name-only -r HEAD^1 HEAD
+        run: git diff --name-only -r HEAD^1 HEAD >> $GITHUB_OUTPUT
       - id: script
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
-          DIFF: ${{ toJSON(steps.DIFF.outputs) }}
+          DIFF: ${{ toJSON(steps.DIFF.outputs.all) }}
         with:
           script: require('.github/scripts/pr-onLabeled.js')({github, context})
 
