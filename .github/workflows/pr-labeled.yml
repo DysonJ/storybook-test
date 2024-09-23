@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 2
       - id: DIFF
         name: Run Diff
-        run: git diff --name-only HEAD..HEAD^
+        run: git diff --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
         #run: echo "files=$(git diff --name-only --diff-filter=ACMRT origin/master...origin/pr-test | xargs)" >> "$GITHUB_OUTPUT"
         # run: echo "files=$(git diff --name-only  master...HEAD)" >> "$GITHUB_OUTPUT"
       - uses: actions/github-script@v6
