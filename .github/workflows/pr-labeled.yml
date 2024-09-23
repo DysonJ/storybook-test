@@ -21,7 +21,7 @@ jobs:
 
       - id: DIFF
         name: Run Diff
-        run: echo "files=$(echo git diff --name-only -r HEAD^1 HEAD)" >> "$GITHUB_OUTPUT"
+        run: echo "files=$(git diff --name-only -r HEAD^1 HEAD)" >> "$GITHUB_OUTPUT"
 
       - id: test 
         run: echo "test=hello" >> "$GITHUB_OUTPUT"
