@@ -8,15 +8,14 @@ module.exports = ({github, context}) => {
 
   const reviewers = context.payload.pull_request.requested_reviewers
 
-  console.log(process.env.DIFF);
-
+  console.log(context)
   // github.rest.pulls.requestReviewers({ 
   //   owner, 
   //   repo,
   //   pull_number: issue_number,
   //   reviewers:['DysonJ']
   // })
-  
+   
   const header = {
     type: "section",
     text: {
