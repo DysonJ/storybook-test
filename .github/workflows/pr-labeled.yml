@@ -3,15 +3,15 @@ run-name: Request PR Review
 on:
   pull_request_target:
     types: [labeled]
-    
-outputs:
-  DIFF:
-    value: ${{ steps.DIFF.outputs.files }}
+
+
 
 jobs:
   lets-send-a-slack:
     if: ${{github.event.label.name == 'Needs Review'}}
     runs-on: ubuntu-latest
+    outputs:
+      files: ${{ steps.DIFF.outputs.files }}
     environment: pr
    
     steps:
@@ -21,12 +21,16 @@ jobs:
 
       - id: DIFF
         name: Run Diff
-        run: files=$(echo git diff --name-only -r HEAD^1 HEAD) >> $GITHUB_OUTPUT
+        run: echo "files=$(echo git diff --name-only -r HEAD^1 HEAD)" >> "$GITHUB_OUTPUT"
+
+      - id: test 
+        run: echo "test=hello" >> "$GITHUB_OUTPUT"
 
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
           DIFF: ${{ toJSON(steps.DIFF.outputs.files) }}
+          test: ${{ steps.test.test }}
         with:
           script: require('.github/scripts/pr-onLabeled.js')({github, context})
 
