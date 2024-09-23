@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 2
       - id: DIFF
         name: Run Diff
-        run: echo "files=$(git diff --name-only --diff-filter=ACMRT master...HEAD | xargs)" >> "$GITHUB_OUTPUT"
+        run: echo "files=$(git diff --name-only --diff-filter=ACMRT master...pr-test | xargs)" >> "$GITHUB_OUTPUT"
         # run: echo "files=$(git diff --name-only  master...HEAD)" >> "$GITHUB_OUTPUT"
       - uses: actions/github-script@v6
         env:
