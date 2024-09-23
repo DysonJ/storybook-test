@@ -8,7 +8,7 @@ module.exports = ({github, context}) => {
 
   const reviewers = context.payload.pull_request.requested_reviewers
 
-  // github.rest.pulls.requestReviewers({
+  // github.rest.pulls.requestReviewers({ 
   //   owner,
   //   repo,
   //   pull_number: issue_number,
