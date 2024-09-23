@@ -13,10 +13,12 @@ jobs:
       - uses: actions/checkout@v4
         with: 
           fetch-depth: 2
+      - id: diff
+        run: git diff --name-only -r HEAD^1 HEAD
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
-        run: git diff --name-only -r HEAD^1 HEAD
+          DIFF: ${{steps.diff.outputs}}
         with:
           script: require('.github/scripts/pr-onLabeled.js')({github, context})
 
