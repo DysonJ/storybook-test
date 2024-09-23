@@ -9,12 +9,17 @@ jobs:
     if: ${{github.event.label.name == 'Needs Review'}}
     runs-on: ubuntu-latest
     environment: pr
+    outputs:
+      DIFF:
+        description: "Random number"
+        value: ${{ steps.DIFF.outputs.files }}
     steps:
       - uses: actions/checkout@v4
         with: 
           fetch-depth: 2
 
       - id: DIFF
+        name: Run Diff
         run: files=$(echo git diff --name-only -r HEAD^1 HEAD) >> $GITHUB_OUTPUT
 
       - uses: actions/github-script@v6
