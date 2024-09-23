@@ -4,11 +4,6 @@ on:
   pull_request_target:
     types: [labeled]
 
-outputs:
-  DIFF:
-    description: "diff"
-    value: ${{ steps.DIFF.outputs.files}}
-
 jobs:
   lets-send-a-slack:
     if: ${{github.event.label.name == 'Needs Review'}}
@@ -25,7 +20,7 @@ jobs:
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
-          DIFF: ${{ toJSON(steps.DIFF.outputs.*) }}
+          DIFF: ${{ toJSON(steps.DIFF.outputs.files) }}
         with:
           script: require('.github/scripts/pr-onLabeled.js')({github, context})
 
