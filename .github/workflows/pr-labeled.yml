@@ -20,7 +20,7 @@ jobs:
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
-          DIFF: ${{ toJSON(steps.DIFF.outputs.all) }}
+          DIFF: ${{ toJSON(steps.DIFF.outputs.*) }}
         with:
           script: require('.github/scripts/pr-onLabeled.js')({github, context})
 
