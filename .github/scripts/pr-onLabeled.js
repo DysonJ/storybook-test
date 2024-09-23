@@ -1,5 +1,5 @@
 const https = require('https');
-module.exports = ({github, context}) => {
+module.exports = ({github, context}, another) => {
   const owner = context.repo.owner
   const repo = context.repo.repo
   const creator = context.payload.pull_request.user.login;
@@ -9,7 +9,7 @@ module.exports = ({github, context}) => {
   const reviewers = context.payload.pull_request.requested_reviewers
 
   console.log(process.env.DIFF)
-  console.log(process.env.test)
+  console.log(another)
   //console.log(context) 
   // github.rest.pulls.requestReviewers({ 
   //   owner, 
