@@ -8,6 +8,8 @@ module.exports = ({github, context}) => {
 
   const reviewers = context.payload.pull_request.requested_reviewers
 
+  console.log(process.env.DIFF);
+
   // github.rest.pulls.requestReviewers({ 
   //   owner, 
   //   repo,
