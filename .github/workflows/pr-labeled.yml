@@ -21,16 +21,12 @@ jobs:
 
       - id: DIFF
         name: Run Diff
-        run: echo "files=$(git diff --name-only -r HEAD^1 HEAD)" >> "$GITHUB_OUTPUT"
-
-      - id: test 
-        run: echo "test=hello" >> "$GITHUB_OUTPUT"
+        run: echo "files=$(echo git diff --name-only -r HEAD^1 HEAD)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
           DIFF: ${{ toJSON(steps.DIFF.outputs.files) }}
-          test: ${{ steps.test.outputs.test }}
         with:
           script: require('.github/scripts/pr-onLabeled.js')({github, context})
 
