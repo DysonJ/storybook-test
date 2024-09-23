@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: pr
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/checkout@v4
+        with: 
+          fetch-depth: 2
+      - name: Get changes 
+        run: git diff --name-only -r HEAD^1 HEAD
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
