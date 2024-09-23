@@ -10,12 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: pr
     steps:
-      - name: Run Diff
       - uses: actions/checkout@v4
         with: 
           fetch-depth: 2
         run: git diff --name-only -r HEAD^1 HEAD
-      - name: Run script
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}

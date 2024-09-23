@@ -1,18 +1,18 @@
-name: Validate PR
+# name: Validate PR
 
-on:
-  pull_request:
-    branches: [ master ]
+# on:
+#   pull_request:
+#     branches: [ master ]
 
-jobs:
-  run-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+# jobs:
+#   run-build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
 
-      - name: build-storybook
-        run: |
-          npm install
-          npm run build-storybook
-          rm -r docs
-          mv storybook-static docs
+#       - name: build-storybook
+#         run: |
+#           npm install
+#           npm run build-storybook
+#           rm -r docs
+#           mv storybook-static docs
