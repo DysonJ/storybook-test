@@ -3,16 +3,17 @@ run-name: Request PR Review
 on:
   pull_request_target:
     types: [labeled]
+    
+outputs:
+  DIFF:
+    value: ${{ steps.DIFF.outputs.files }}
 
 jobs:
   lets-send-a-slack:
     if: ${{github.event.label.name == 'Needs Review'}}
     runs-on: ubuntu-latest
     environment: pr
-    outputs:
-      DIFF:
-        description: "Random number"
-        value: ${{ steps.DIFF.outputs.files }}
+   
     steps:
       - uses: actions/checkout@v4
         with: 
