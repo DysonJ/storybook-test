@@ -11,7 +11,7 @@ module.exports = ({github, context}) => {
   console.log(context)
   // github.rest.pulls.requestReviewers({ 
   //   owner, 
-  //   repo,
+  //   repo, 
   //   pull_number: issue_number,
   //   reviewers:['DysonJ']
   // })
