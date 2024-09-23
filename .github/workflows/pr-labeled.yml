@@ -10,8 +10,6 @@ jobs:
   lets-send-a-slack:
     if: ${{github.event.label.name == 'Needs Review'}}
     runs-on: ubuntu-latest
-    outputs:
-      files: ${{ steps.changes.outputs.files}}
     environment: pr
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +17,7 @@ jobs:
           fetch-depth: 2
       - id: DIFF
         name: Run Diff
-        run: echo "files=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)" >> "$GITHUB_OUTPUT"
+        run: echo "files=$(git diff --name-only --diff-filter=ACMRT master...HEAD | xargs)" >> "$GITHUB_OUTPUT"
         # run: echo "files=$(git diff --name-only  master...HEAD)" >> "$GITHUB_OUTPUT"
       - uses: actions/github-script@v6
         env:
