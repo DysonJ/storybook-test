@@ -16,8 +16,8 @@ jobs:
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v45
-        with:
-          files: '**.pw.ts'
+        # with:
+        #   files: '**.pw.ts'
       - name: List all changed files
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
@@ -35,7 +35,7 @@ jobs:
       - uses: actions/github-script@v6
         env:
           SLACK_WEBHOOK_PATH: ${{ secrets.SLACK_WEBHOOK_PATH }}
-          DIFF: ${{ toJSON(steps.DIFF.outputs.files) }}
+          DIFF: ${{ toJSON(steps.changed-files.outputs.all_changed_files) }}
         with:
-          script: require('.github/scripts/pr-onLabeled.js')({github, context}, ${{steps.DIFF.outputs.files}})
+          script: require('.github/scripts/pr-onLabeled.js')({github, context}, ${{steps.changed-files.outputs.all_changed_files}})
 
